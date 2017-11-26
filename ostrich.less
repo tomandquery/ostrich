@@ -1,0 +1,110 @@
+/*variables*/
+@transparent: transparent;
+@white: white;
+@black: black;
+@grey: grey;
+@lightgrey: lightgrey;
+@red: red;
+@green: green;
+@blue: blue;
+@yellow: yellow;
+@purple: purple;
+@cyan: cyan;
+
+/* float */
+.fn {float: none;}
+.fl {float: left;}
+.fr {float: right;}
+
+/* clear */
+.cn {clear: none;}
+.cl {clear: left;}
+.cr {clear: right;}
+.cb {clear: both;}
+
+/* display */
+.di {display: inline;}
+.dib {display: inline-block;}
+.df {display: flex;}
+.db {display: block;}
+.dn {display: none;}
+
+/* background */
+.bct {background-color: @transparent;}
+.bcw {background-color: @white;}
+.bck {background-color: @black;}
+.bcg {background-color: @grey;}
+.bcr {background-color: @red;}
+.bcg {background-color: @green;}
+.bcb {background-color: @blue;}
+.bcy {background-color: @yellow;}
+.bcp {background-color: @purple;}
+.bcc {background-color: @cyan;}
+
+/* border */
+.bn {border: none;}
+.b1 {border: 1px solid @lightgrey;}
+.b2 {border: 2px solid @lightgrey;}
+.b3 {border: 3px solid @lightgrey;}
+.b4 {border: 4px solid @lightgrey;}
+.b5 {border: 5px solid @lightgrey;}
+
+/* text-align */
+.tc {text-align: center;}
+.tr {text-align: right;}
+.tl {text-align: left;}
+
+/* font-weight */
+.fwn {font-weight: normal;}
+.fwb {font-weight: bold;}
+
+
+//amount of iterations
+@iterations: 100;
+
+//classes with positive values
+.mixin-loop (@i) when (@i >= 0) {  
+
+    .m@{i}{ margin:(@i*1px); }
+    .mt@{i}{ margin-top:(@i*1px); }
+    .mb@{i}{ margin-bottom:(@i*1px); }
+    .ml@{i}{ margin-left:(@i*1px); }
+    .mr@{i}{ margin-right:(@i*1px); }
+
+    .p@{i}{ padding:(@i*1px); }
+    .pt@{i}{ padding-top:(@i*1px); }
+    .pb@{i}{ padding-bottom:(@i*1px); }
+    .pl@{i}{ padding-left:(@i*1px); }
+    .pr@{i}{ padding-right:(@i*1px); }  
+
+    .py@{i}{ padding-top:(@i*1px); padding-bottom:(@i*1px); }  
+    .pz@{i}{ padding-right:(@i*1px); padding-left:(@i*1px); }  
+
+    .fs@{i}{ font-size:(@i*1px); }
+
+    .ty@{i}{ transform: translateY((@i*1px)); }
+    .tz@{i}{ transform: translateZ((@i*1px)); }
+
+    .mixin-loop(@i - 1);
+}
+
+//classes with neagtive values
+.mixin-loop-minus (@i) when (@i > 0) {  
+
+    .m-@{i}{ margin:-(@i*1px); }
+    .mt-@{i}{ margin-top:-(@i*1px); }
+    .mb-@{i}{ margin-bottom:-(@i*1px); }
+    .ml-@{i}{ margin-left:-(@i*1px); }
+    .mr-@{i}{ margin-right:-(@i*1px); }
+
+    .ty-@{i}{ transform: translateY(-(@i*1px)); }
+    .tz-@{i}{ transform: translateZ(-(@i*1px)); }
+
+    .mixin-loop-minus(@i - 1);
+}
+
+//call all mixins
+.mixin-loop(@iterations);
+.mixin-loop-minus(@iterations);
+
+
